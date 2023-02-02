@@ -640,7 +640,7 @@ class temp
   // End Of TexT Function ==> لعرض بيانات المدرس للطالب
 
   // Start Of sdfa Widget ==> للصفحة الرئيسية
-  static Widget sdfa ( { required String text , required double size , required double top , required double left , required BuildContext context } ) =>
+  static Widget sdfa ( { required String text /*, required double size , required double top , required double left */, required BuildContext context } ) =>
   Opacity
   (
 
@@ -683,27 +683,21 @@ class temp
 
       child : Container
       (
-        height : 158,
-        width : 350,
+        height : 100,
+        width : 300,
 
-        padding : EdgeInsets . only ( top : top , left : left ),
+        margin : EdgeInsets . only ( bottom : 25 ) ,
 
         decoration : BoxDecoration
         (
-          border : Border . all ( color : Colors . blueAccent . shade700 , width : 20 ),
-          borderRadius : text == "المدرسين" || text == "المفقودات" ?
-          BorderRadius . only ( topLeft : Radius . circular ( 500 ) , bottomRight : Radius . circular ( 500 ) ) :
-          BorderRadius . only ( topRight : Radius . circular ( 500 ) , bottomLeft : Radius . circular ( 500 ) ),
+          border : Border . all ( color : Colors . blueAccent . shade700 , width : 7 ),
+          borderRadius : BorderRadius . circular(80),
           color : Colors . black ,
-          image : DecorationImage
-          (
-            image : AssetImage ( "pic/pic1.png" ),
-            fit : BoxFit . contain,
-          )
+
 
         ),
 
-        child : Text ( text , style : TextStyle ( fontSize : size , color : Colors . white , fontWeight : FontWeight . bold ) )
+        child : Center(child: Text ( text , style : TextStyle ( fontSize : 20 , color : Colors . white , fontWeight : FontWeight . bold ) ))
 
       )
 

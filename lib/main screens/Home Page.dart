@@ -18,9 +18,7 @@ class Home extends StatelessWidget
     return Scaffold
     (
 
-      extendBodyBehindAppBar : true,
-
-      appBar : AppBar ( backgroundColor : Colors . transparent , elevation : 0 ),
+      extendBodyBehindAppBar: false,
 
       body : Container
       (
@@ -28,37 +26,32 @@ class Home extends StatelessWidget
         width : 409,
         decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( "pic/pic2.jpg" ) , fit : BoxFit . fill , repeat : ImageRepeat . noRepeat ) ),
 
-        child : Padding
+        child : Column
         (
 
-          padding : EdgeInsets . only ( top : 40 , bottom : 10 ),
+          mainAxisAlignment: MainAxisAlignment.center,
 
-          child :  Column
-          (
-
-            children :
-            [
+          children :
+          [
 
 
-              // Start Of الكليات و التخصصات
-              temp . sdfa ( text : "الكليات و التخصصات" , size : 25 , top : 80 , left : 80 , context : context ),
-              // End Of  الكليات و التخصصات
+            // Start Of الكليات و التخصصات
+            temp . sdfa ( text : "الكليات و التخصصات" , context : context ),
+            // End Of  الكليات و التخصصات
 
-              // Start Of  المدرسين
-              temp . sdfa ( text : "المدرسين" , size : 35 , top : 69 , left : 80 , context : context ),
-              // End Of  المدرسين
+            // Start Of  المدرسين
+            temp . sdfa ( text : "المدرسين" , context : context ),
+            // End Of  المدرسين
 
-              // Start Of  الخارطة
-              temp . sdfa ( text : "الخارطة" , size : 35 , top : 72 , left : 100 , context : context ),
-              // End Of  الخارطة
+            // Start Of  الخارطة
+            temp . sdfa ( text : "الخارطة" , context : context ),
+            // End Of  الخارطة
 
-              // Start Of  المفقودات
-              temp . sdfa ( text : "المفقودات" , size : 35 , top : 75 , left : 73, context : context  )
-              // End Of  المفقودات
+            // Start Of  المفقودات
+            temp . sdfa ( text : "المفقودات" , context : context  )
+            // End Of  المفقودات
 
-            ]
-
-          )
+          ]
 
         )
 
