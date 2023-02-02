@@ -2,12 +2,9 @@
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-
-
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-
 import 'package:untitled1/main%20screens/Colleges%20And%20Specialties/S_Colleges.dart';
 import 'package:untitled1/main%20screens/Teachers/Doctor_view&_Edit_data.dart';
 import 'package:untitled1/main%20screens/Teachers/SignIn.dart';
@@ -15,13 +12,12 @@ import 'package:untitled1/main%20screens/Teachers/Teachers.dart';
 import 'package:untitled1/main%20screens/personal%20lost.dart';
 import 'package:untitled1/main%20screens/Map.dart';
 
-
 class temp
 {
 
-  int  Index = 0 ;
+  static int  Index = 0 ;
 
-  List < sts > Items =
+  static List < sts > Items =
   [
 
     sts ( College_Name : "كلية الهندسة"                       , image : "pic/engineering college.png" ),
@@ -33,10 +29,10 @@ class temp
 
   ];
 
-  List < String >  College_Name = [ "كلية الهندسة" , "كلية العلوم" , "كلية تكنولوجيا المعلومات و الاتصالات" , "كلية الأعمال" , "كلية الآداب" , "كلية العلوم التربوية" ] ;
+  static List < String >  College_Name = [ "كلية الهندسة" , "كلية العلوم" , "كلية تكنولوجيا المعلومات و الاتصالات" , "كلية الأعمال" , "كلية الآداب" , "كلية العلوم التربوية" ] ;
 
 
-  List < College_Depts > College_DeptS =
+  static List < College_Depts > College_DeptS =
   [
 
     College_Depts ( Colleges_Depts : [ "قسـم هندسة القوى الكهربائية وهندسة الميكاترونيكس" , "قسم الموارد الطبيعية والهندسة الكيمياوية" , "قسم الهندسة المدنية" , "قسم الهندسة الميكانيكية", "قسم الهندسة الميكانيكية" , "قسم هندسة الاتصالات والالكترونيات و الحاسوب" ] ),
@@ -53,7 +49,7 @@ class temp
 
   ];
 
-  List < College_Specialties > College_SpecialtieS =
+  static List < College_Specialties > College_SpecialtieS =
   [
 
     College_Specialties ( Colleges_SpecialtieS : [ "الهندسة المدنية" , "هندسة القوى الكهربائية" , "هندسة الميكاترونيكس" , "الهندسة الميكانيكية : الإنتاج والآلات" , "الهندسة الميكانيكية : التكييف والتبريد والتدفئة" , "الهندسة الميكانيكية : المركبات" , "الهندسة الجيولوجية" , "هندسة الصناعات الكيميائية" , "هندسة التعدين" , "هندسة الحاسوب" , "هندسة الاتصالات والإلكترونيات" , "هندسة الطاقة المتجددة المتكاملة" , "هندسة الأنظمة الذكية" ] ),
@@ -71,7 +67,7 @@ class temp
   ];
 
   // Start Of Item Widget ==> لعرض بيانات المادة
-  Widget Item ( { required String txt1 , required String txt2 , required  double txt_pad , required double size1 , required double size2 } ) =>
+  static Widget Item ( { required String txt1 , required String txt2 , required  double txt_pad , required double size1 , required double size2 } ) =>
   Container
   (
 
@@ -122,7 +118,7 @@ class temp
   // End Of Item Widget ==> لعرض بيانات المادة
 
   // Start Of Arrows Widget ==> اسهم القوائم
-  Widget Arrows ( { required double top , required double left , required IconData icon } ) =>
+  static Widget Arrows ( { required double top , required double left , required IconData icon } ) =>
   Padding
   (
 
@@ -133,7 +129,7 @@ class temp
   // End Of Arrows Widget ==> اسهم القوائم
 
   // Start Of Pic Widget ==> لقسم المدرسين
-  Widget Pic ( { required BuildContext context , required String image , required String txt ,required bool flag } ) =>
+  static Widget Pic ( { required BuildContext context , required String image , required String txt ,required bool flag } ) =>
   Expanded
   (
 
@@ -224,7 +220,7 @@ class temp
         }
 
         else
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( num : 2 ) ) ) ;
+          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( where_did_you_come_from : "From a student request to display teacher data" ) ) ) ;
 
       },
 
@@ -271,7 +267,7 @@ class temp
   // End Of Pic Widget ==> لقسم المدرسين
 
   // Start Of Text Field Widget ==> لمعلومات المواد و المدرسين
-  Widget Text_Field ( { required String label , required String hint , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required double opacity } ) =>
+  static Widget Text_Field ( { required String label ,  String ? hint  , required TextEditingController controller , TextInputType ? keyboardType = TextInputType . text , TextInputAction ? textInputAction = TextInputAction . done , required double opacity } ) =>
   Container
   (
 
@@ -385,8 +381,8 @@ class temp
   );
   // End Of Text Field Widget ==> لمعلومات المواد و المدرسين
 
-  // Start Of Text Field Widget ==> للكلية والقسم - تسجيل حساب المدرس
-  Widget Type_Ahead ( { required String label , required String hint , required TextEditingController controller , required TextInputType keyboardType , required TextInputAction textInputAction , required double opacity } ) =>
+  // Start Of Type_Ahead Widget ==> للكلية والقسم - تسجيل حساب المدرس
+  static Widget Type_Ahead ( { required String label ,  String ? hint , required TextEditingController controller , TextInputAction ? textInputAction = TextInputAction . done , required double opacity } ) =>
   Opacity
   (
     opacity : opacity,
@@ -461,7 +457,7 @@ class temp
 
               textInputAction : textInputAction,
               controller : controller,
-              keyboardType : keyboardType,
+              keyboardType : TextInputType . none ,
               style : TextStyle ( fontSize : 25 , color : Colors . white ),
               textAlign : TextAlign . center,
               cursorColor : Colors . white,
@@ -533,10 +529,10 @@ class temp
     )
 
   );
-  // End Of Text Field Widget ==> للكلية والقسم - تسجيل حساب المدرس
+  // End Of Type_Ahead Widget ==> للكلية والقسم - تسجيل حساب المدرس
 
   // Start Of TXT Function ==> للخارطه
-  Widget TXT ( { required String txt , required double size , required int quarterTurns , required double bottom , required double top , required double left , required BuildContext context } ) =>
+  static Widget TXT ( { required String txt , required double size , required int quarterTurns , required double bottom , required double top , required double left , required BuildContext context } ) =>
   Opacity
   (
 
@@ -561,7 +557,6 @@ class temp
         ),
 
         child : InkWell
-
         (
 
           onTap : ( ) => Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Map ( What_Do_You_Wont : "building floors" ) ) ),
@@ -578,7 +573,7 @@ class temp
   // End Of TXT Function ==> للخارطه
 
   // Start Of TexT Function ==> لعرض بيانات المدرس للطالب
-  Widget TexT ( { required String text , required String label } ) =>
+  static Widget TexT ( { required String text , required String label } ) =>
   Stack
   (
 
@@ -645,7 +640,7 @@ class temp
   // End Of TexT Function ==> لعرض بيانات المدرس للطالب
 
   // Start Of sdfa Widget ==> للصفحة الرئيسية
-  Widget sdfa ( { required String text , required double size , required double top , required double left , required BuildContext context } ) =>
+  static Widget sdfa ( { required String text , required double size , required double top , required double left , required BuildContext context } ) =>
   Opacity
   (
 
@@ -676,7 +671,7 @@ class temp
           );
 
         else if ( text == "الكليات و التخصصات" )
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( num : 0 ) ) ) ;
+          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( where_did_you_come_from : "From a student request to view colleges" ) ) ) ;
 
         else if ( text == "الخارطة" )
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Map ( What_Do_You_Wont : "Map" ) ) ) ;
@@ -717,7 +712,7 @@ class temp
   );
   // End Of sdfa Widget ==> للصفحة الرئيسية
 
-  Widget suffixIcon ( TextEditingController controller , String txt )
+  static Widget suffixIcon ( TextEditingController controller , String txt )
   {
 
     if ( controller . text . isEmpty )

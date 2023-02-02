@@ -10,8 +10,6 @@ import 'package:untitled1/main%20screens/temp.dart';
 class Home extends StatelessWidget
 {
 
-  var x = temp ( ) ;
-
   // Start Of build Widget
   @override
   Widget build ( BuildContext context )
@@ -43,19 +41,19 @@ class Home extends StatelessWidget
 
 
               // Start Of الكليات و التخصصات
-              x . sdfa ( text : "الكليات و التخصصات" , size : 25 , top : 80 , left : 80 , context : context ),
+              temp . sdfa ( text : "الكليات و التخصصات" , size : 25 , top : 80 , left : 80 , context : context ),
               // End Of  الكليات و التخصصات
 
               // Start Of  المدرسين
-              x . sdfa ( text : "المدرسين" , size : 35 , top : 69 , left : 80 , context : context ),
+              temp . sdfa ( text : "المدرسين" , size : 35 , top : 69 , left : 80 , context : context ),
               // End Of  المدرسين
 
               // Start Of  الخارطة
-              x . sdfa ( text : "الخارطة" , size : 35 , top : 72 , left : 100 , context : context ),
+              temp . sdfa ( text : "الخارطة" , size : 35 , top : 72 , left : 100 , context : context ),
               // End Of  الخارطة
 
               // Start Of  المفقودات
-              x . sdfa ( text : "المفقودات" , size : 35 , top : 75 , left : 73, context : context  )
+              temp . sdfa ( text : "المفقودات" , size : 35 , top : 75 , left : 73, context : context  )
               // End Of  المفقودات
 
             ]

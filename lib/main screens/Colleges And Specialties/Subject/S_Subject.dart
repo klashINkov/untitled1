@@ -15,7 +15,7 @@ class S_Subject extends StatelessWidget
 
   S_Subject ( { required this . Name , required this . NO , required this . Previous , required this . Type , required this . Credit_hours , required this . syllabus , required this . DESC } ) ;
 
-  var x = temp ( ) ;
+
 
   // Start Of build Widget
   @override
@@ -67,19 +67,19 @@ class S_Subject extends StatelessWidget
             [
 
               // Start Of رقم المادة
-              x . Item ( txt1 : "رقم المادة" , txt2 : NO , txt_pad : 90 , size1 : 30 , size2 : 30 ),
+              temp . Item ( txt1 : "رقم المادة" , txt2 : NO , txt_pad : 90 , size1 : 30 , size2 : 30 ),
               // End Of رقم المادة
 
               // Start Of المتطلب السابق للمادة
-              x . Item ( txt1 : "المتطلب السابق للمادة" , txt2 : Previous , txt_pad : 85 , size1 : 30 , size2 : 18 ),
+              temp . Item ( txt1 : "المتطلب السابق للمادة" , txt2 : Previous , txt_pad : 85 , size1 : 30 , size2 : 18 ),
               // End Of المتطلب السابق للمادة
 
               // Start Of االساعات المعتمدة
-              x . Item ( txt1 : "الساعات المعتمدة" , txt2 : Credit_hours . toString( ) , txt_pad : 85 , size1 : 30 , size2 : 30 ),
+              temp . Item ( txt1 : "الساعات المعتمدة" , txt2 : Credit_hours . toString( ) , txt_pad : 85 , size1 : 30 , size2 : 30 ),
               // End Of االساعات المعتمدة
 
               // Start Of االساعات المعتمدة
-              x . Item ( txt1 : "نوع المادة" , txt2 : Type . toString( ) , txt_pad : 85 , size1 : 30 , size2 : 30 ),
+              temp . Item ( txt1 : "نوع المادة" , txt2 : Type . toString( ) , txt_pad : 85 , size1 : 30 , size2 : 30 ),
               // End Of االساعات المعتمدة
 
               // Start Of وصف المساق
@@ -136,11 +136,11 @@ class S_Subject extends StatelessWidget
                   // End Text of نص وصف المساق
 
                   // Start Of Arrow Up
-                  x . Arrows ( top : 30 , left : 346 , icon : Icons . keyboard_arrow_up ),
+                  temp . Arrows ( top : 30 , left : 346 , icon : Icons . keyboard_arrow_up ),
                   // End Of Arrow Up
 
                   // Start Of Arrow down
-                  x . Arrows ( top : 230 , left : 346 , icon : Icons . keyboard_arrow_down )
+                  temp . Arrows ( top : 230 , left : 346 , icon : Icons . keyboard_arrow_down )
                   // End Of Arrow down
 
                 ]

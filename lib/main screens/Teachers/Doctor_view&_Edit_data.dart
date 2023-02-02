@@ -34,7 +34,6 @@ class Doctor_data_view extends StatefulWidget
 class _Doctor_data_view extends State < Doctor_data_view >
 {
 
-  var x = temp ( ) ;
 
   GlobalKey < FormState > formstate = GlobalKey < FormState > ( ) ;
 
@@ -133,49 +132,49 @@ class _Doctor_data_view extends State < Doctor_data_view >
                 [
 
                   // Start of الكلية TextField
-                  x . Type_Ahead ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , controller : Coll , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done , opacity : 0.9 ),
+                  temp . Type_Ahead ( label : " الكلية" , hint : "اسم الكلية التي تتبع لها" , controller : Coll ,  opacity : 0.9 ),
                   // End of الكلية TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of القسم TextField
-                  x . Type_Ahead ( label : " القسم" , hint : "اسم القسم الذي تتبع له" ,controller : Dept , keyboardType : TextInputType . none ,  textInputAction : TextInputAction . done , opacity : 0.9 ),
+                  temp . Type_Ahead ( label : " القسم" , hint : "اسم القسم الذي تتبع له" ,controller : Dept ,  opacity : 0.9 ),
                   // End of القسم TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of  المساقات الحالية TextField
-                  x . Text_Field ( label : " المساقات الحالية" , hint : "المساقات التي تعطيها خلال الفصل الحالي\nاسم المساق - القاعه التي يعطى فيها المساق\nالموعد الذي يعطى فيه المساق" , controller : Current_courses , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , opacity : 0.9 ),
+                  temp . Text_Field ( label : " المساقات الحالية" , hint : "المساقات التي تعطيها خلال الفصل الحالي\nاسم المساق - القاعه التي يعطى فيها المساق\nالموعد الذي يعطى فيه المساق" , controller : Current_courses , textInputAction : TextInputAction . newline , opacity : 0.9 ),
                   // End of  المساقات الحالية TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of  الساعات المكتبةة TextField
-                  x . Text_Field ( label : " الساعات المكتبة" , hint : "الساعات المكتبية للفصل الحالي" , controller : Office_hours , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , opacity : 0.9 ),
+                  temp . Text_Field ( label : " الساعات المكتبة" , hint : "الساعات المكتبية للفصل الحالي" , controller : Office_hours , opacity : 0.9 ),
                   // End of  الساعات المكتبة TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of الدرجة الجامعية TextField
-                  x . Text_Field ( label : " الدرجة الجامعية" , hint : "الدرجة الحاصل عليها" , controller : Dgree , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , opacity : 0.9 ),
+                  temp . Text_Field ( label : " الدرجة الجامعية" , hint : "الدرجة الحاصل عليها" , controller : Dgree , opacity : 0.9 ),
                   // End of الدرجة الجامعية TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of عنوان المكتب TextField
-                  x . Text_Field ( label : " عنوان المكتب" , hint : "اسم المبنى الموجود فيه المكتب - الطابق - القسم" , controller : Office_Address , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , opacity : 0.9 ),
+                  temp . Text_Field ( label : " عنوان المكتب" , hint : "اسم المبنى الموجود فيه المكتب - الطابق - القسم" , controller : Office_Address , opacity : 0.9 ),
                   // End of عنوان المكتب TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of وسيلة التواصل TextField
-                  x . Text_Field ( label : " وسيلة التواصل" , hint : "مثال : رقم هاتف او حساب تواصل اجتماعي او عنوان بريد الكتروني" , controller : Contact , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , opacity : 0.9 ),
+                  temp . Text_Field ( label : " وسيلة التواصل" , hint : "مثال : رقم هاتف او حساب تواصل اجتماعي او عنوان بريد الكتروني" , controller : Contact , textInputAction : TextInputAction . newline , opacity : 0.9 ),
                   // End of وسيلة التواصل TextField
 
                   SizedBox ( height : 30 ),
 
                   // Start of نبذه عن المدرس TextField
-                  x . Text_Field ( label : " نبذه عن المدرس" , hint : "" , controller : Desc , keyboardType : TextInputType . text , textInputAction : TextInputAction . newline , opacity : 0.9 ),
+                  temp . Text_Field ( label : " نبذه عن المدرس" , controller : Desc , textInputAction : TextInputAction . newline , opacity : 0.9 ),
                   // End of نبذه عن المدرس TextField
 
                   SizedBox ( height : 25 ),
@@ -331,7 +330,7 @@ class _Doctor_data_view extends State < Doctor_data_view >
 
                     child : ListTile
                     (
-                      onTap : ( ) => Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( num : 1 ) ) ) ,
+                      onTap : ( ) => Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( where_did_you_come_from : "From a teacher's request to add a subject" ) ) ) ,
                       title : Center ( child : Text ( "اضافة او تعديل بيانات مادة" , style : TextStyle ( color : Colors . white , fontSize : 20 , fontWeight : FontWeight . bold ) ) )
                     )
 
@@ -440,39 +439,39 @@ class _Doctor_data_view extends State < Doctor_data_view >
               children :
               [
 
-                x . TexT ( text : widget . Name , label : "الاسم"),
+                temp . TexT ( text : widget . Name , label : "الاسم"),
 
                 SizedBox ( height : 25 ),
 
-                x . TexT ( text : widget . Coll , label : "الكلية"),
+                temp . TexT ( text : widget . Coll , label : "الكلية"),
 
                 SizedBox ( height : 25 ),
 
-                x . TexT ( text : widget . Dept , label : "القسم"),
+                temp . TexT ( text : widget . Dept , label : "القسم"),
 
                 SizedBox ( height : 25 ),
 
-                x . TexT ( text : widget . Current_courses , label : "المساقات الحالية"),
+                temp . TexT ( text : widget . Current_courses , label : "المساقات الحالية"),
 
                 SizedBox ( height : 25 ),
 
-                x . TexT ( text : widget . Office_hours , label : "الساعات المكتبية"),
+                temp . TexT ( text : widget . Office_hours , label : "الساعات المكتبية"),
 
                 SizedBox ( height : 25 ),
 
-                x . TexT ( text : widget . Dgree , label : "الدرجة الجامعية"),
+                temp . TexT ( text : widget . Dgree , label : "الدرجة الجامعية"),
 
                 SizedBox ( height : 25 ),
 
-                x . TexT ( text : widget . Office_Address , label : "عنوان المكتب"),
+                temp . TexT ( text : widget . Office_Address , label : "عنوان المكتب"),
 
                 SizedBox ( height : 25 ),
 
-                x . TexT ( text : widget . Contact , label : "وسيلة التواصل"),
+                temp . TexT ( text : widget . Contact , label : "وسيلة التواصل"),
 
                 SizedBox ( height : 25 ),
 
-                x . TexT ( text : widget . Desc , label : "النبذه"),
+                temp . TexT ( text : widget . Desc , label : "النبذه"),
 
               ]
 

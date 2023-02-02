@@ -24,7 +24,7 @@ class Add_Subjects extends StatefulWidget
 class _Add_Subjects extends State < Add_Subjects >
 {
 
-  var x = temp ( ) ;
+
   GlobalKey < FormState > formstate = GlobalKey < FormState > ( ) ;
 
   final Name         = TextEditingController ( ) ;
@@ -98,130 +98,131 @@ class _Add_Subjects extends State < Add_Subjects >
         (
 
           image : DecorationImage ( image : AssetImage ( "pic/pic1.png" ), fit : BoxFit . fill, repeat : ImageRepeat . noRepeat ) ),
-        padding : EdgeInsets . symmetric ( horizontal : 15 ),
+          padding : EdgeInsets . symmetric ( horizontal : 15 ),
 
-        child : ListView
-        (
+          child : ListView
+          (
 
-          children :
-          [
+            children :
+            [
 
-            Form
-            (
-
-              key : formstate,
-
-              child : Column
+              Form
               (
 
-                children :
-                [
+                key : formstate,
 
-                  // Start of اسم المادة TextField
-                  x . Text_Field ( label : " اسم المادة" , hint : "" , controller : Name , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , opacity : 0.6 ),
-                  // End of اسم المادة TextField
+                child : Column
+                (
 
-                  SizedBox ( height : 30 ),
+                  children :
+                  [
 
-                  // Start of رقم المادة TextField
-                  x . Text_Field ( label : " رقم المادة" , hint : "" , controller : Id , keyboardType : TextInputType . number , textInputAction : TextInputAction . done , opacity : 0.6 ),
-                  // End of رقم المادة TextField
 
-                  SizedBox ( height : 30 ),
+                    // Start of اسم المادة TextField
+                    temp . Text_Field ( label : " اسم المادة" , controller : Name , opacity : 0.6 ),
+                    // End of اسم المادة TextField
 
-                  // Start of رقم المادة TextField
-                  x . Type_Ahead ( label : " الكلية" , hint : "" ,  controller : Coll , keyboardType : TextInputType . none , textInputAction : TextInputAction . done , opacity : 0.6 ),
-                  // End of رقم المادة TextField
+                    SizedBox ( height : 30 ),
 
-                  SizedBox ( height : 30 ),
+                    // Start of رقم المادة TextField
+                    temp . Text_Field ( label : " رقم المادة" , controller : Id , keyboardType : TextInputType . number , opacity : 0.6 ),
+                    // End of رقم المادة TextField
 
-                  // Start of رقم المادة TextField
-                  x . Type_Ahead ( label : " التخصص" , hint : "التخصص الذي ترغب في اضافة المادة اليه" , controller : Dept , keyboardType : TextInputType . none , textInputAction : TextInputAction . done , opacity : 0.6 ),
-                  // End of رقم المادة TextField
+                    SizedBox ( height : 30 ),
 
-                  SizedBox ( height : 30 ),
+                    // Start of رقم المادة TextField
+                    temp . Type_Ahead ( label : " الكلية" , controller : Coll , opacity : 0.6 ),
+                    // End of رقم المادة TextField
 
-                  // Start of المتطلب السابق للمادة TextField
-                  x . Text_Field ( label : " المتطلب السابق للمادة" , hint : "اسم المتطلب ( رقم المتطلب )" , controller : prev , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , opacity : 0.6 ),
-                  // End of المتطلب السابق للمادة TextField
+                    SizedBox ( height : 30 ),
 
-                  SizedBox ( height : 30 ),
+                    // Start of رقم المادة TextField
+                    temp . Type_Ahead ( label : " التخصص" , hint : "التخصص الذي ترغب في اضافة المادة اليه" , controller : Dept , opacity : 0.6 ),
+                    // End of رقم المادة TextField
 
-                  // Start of نوع المادة TextField
-                  x . Text_Field ( label : " نوع المادة" , hint : "عملي ام نظري؟" , controller : Type , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , opacity : 0.6 ),
-                  // End of نوع المادة TextField
+                    SizedBox ( height : 30 ),
 
-                  SizedBox ( height : 30 ),
+                    // Start of المتطلب السابق للمادة TextField
+                    temp . Text_Field ( label : " المتطلب السابق للمادة" , hint : "اسم المتطلب ( رقم المتطلب )" , controller : prev , opacity : 0.6 ),
+                    // End of المتطلب السابق للمادة TextField
 
-                  // Start of الساعات المعتمدة للمادة TextField
-                  x . Text_Field ( label : " الساعات المعتمدة للمادة" , hint : "" , controller : Credit_hours , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , opacity : 0.6 ),
-                  // End of الساعات المعتمدة للمادة TextField
+                    SizedBox ( height : 30 ),
 
-                  SizedBox ( height : 30 ),
+                    // Start of نوع المادة TextField
+                    temp . Text_Field ( label : " نوع المادة" , hint : "عملي ام نظري؟" , controller : Type , opacity : 0.6 ),
+                    // End of نوع المادة TextField
 
-                  // Start of نبذه عن المادة TextField
-                  x . Text_Field ( label : " نبذه عن المادة" , hint : "" , controller : Desc , keyboardType : TextInputType . text , textInputAction : TextInputAction . done , opacity : 0.6 ),
-                  // End of نبذه عن المادة TextField
+                    SizedBox ( height : 30 ),
 
-                  // Start Of Add Button
-                  Opacity
-                  (
+                    // Start of الساعات المعتمدة للمادة TextField
+                    temp . Text_Field ( label : " الساعات المعتمدة للمادة" , controller : Credit_hours , opacity : 0.6 ),
+                    // End of الساعات المعتمدة للمادة TextField
 
-                    opacity : 0.6,
+                    SizedBox ( height : 30 ),
 
-                    child : Container
+                    // Start of نبذه عن المادة TextField
+                    temp . Text_Field ( label : " نبذه عن المادة" , controller : Desc , textInputAction : TextInputAction.newline , opacity : 0.6 ),
+                    // End of نبذه عن المادة TextField
+
+                    // Start Of Add Button
+                    Opacity
                     (
 
-                      height : 65,
-                      width : 300,
-                      margin : EdgeInsets . only ( top : 40 ),
+                      opacity : 0.6,
 
-                      decoration : BoxDecoration
+                      child : Container
                       (
 
-                        color : Colors . black,
-                        border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
-                        borderRadius : BorderRadius . circular ( 40 )
+                        height : 65,
+                        width : 300,
+                        margin : EdgeInsets . only ( top : 40 ),
 
-                      ),
+                        decoration : BoxDecoration
+                        (
 
-                      child : FloatingActionButton
-                      (
-                        backgroundColor : Colors.transparent,
+                          color : Colors . black,
+                          border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+                          borderRadius : BorderRadius . circular ( 40 )
 
-                        onPressed : ( )
-                        {
+                        ),
 
-                          var formdata = formstate . currentState ;
-                          if ( formdata! . validate ( ) )
+                        child : FloatingActionButton
+                        (
+                          backgroundColor : Colors.transparent,
+
+                          onPressed : ( )
                           {
 
-                            formdata . save ( ) ;
-                            Add_Subject ( Dept : Dept . text , Coll : Coll . text ) ;
-                            // Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => T_Subjects ( ) ) );
+                            var formdata = formstate . currentState ;
+                            if ( formdata! . validate ( ) )
+                            {
 
-                          }
+                              formdata . save ( ) ;
+                              Add_Subject ( Dept : Dept . text , Coll : Coll . text ) ;
+                              // Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => T_Subjects ( ) ) );
 
-                        },
+                            }
 
-                        child : Text ( "إضافة" , style : TextStyle ( color : Colors . white , fontSize : 25 ) )
+                          },
+
+                          child : Text ( "إضافة" , style : TextStyle ( color : Colors . white , fontSize : 25 ) )
+
+                        )
 
                       )
 
                     )
+                    // End Of Add Button
 
-                  )
-                  // End Of Add Button
+                  ]
 
-                ]
+                )
 
               )
 
-            )
+            ]
 
-          ]
-
-        )
+          )
 
       )
 

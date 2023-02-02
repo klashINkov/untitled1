@@ -13,7 +13,6 @@ class Map extends StatelessWidget
   String What_Do_You_Wont ;
   Map ( { required this . What_Do_You_Wont } ) ;
 
-  var x = temp ( ) ;
   final double maxScale = 4 ;
   final double minScale = 1 ;
 
@@ -58,51 +57,51 @@ class Map extends StatelessWidget
           [
 
             // Start of مجمع القاعات
-             x . TXT ( txt : "مجمع\nالقاعات" , size : 25 , quarterTurns : 0 , bottom : 0 , top : 50 , left : 25 , context : context ) ,
+             temp . TXT ( txt : "مجمع\nالقاعات" , size : 25 , quarterTurns : 0 , bottom : 0 , top : 50 , left : 25 , context : context ) ,
             // Start of مجمع القاعات
 
             // Start of محمع الرياضي
-             x . TXT ( txt : "المجمع الرياضي" , size : 25 , quarterTurns : 1 , bottom : 215 , top : 0 , left : 10 , context : context ) ,
+             temp . TXT ( txt : "المجمع الرياضي" , size : 25 , quarterTurns : 1 , bottom : 215 , top : 0 , left : 10 , context : context ) ,
             // Start of محمع الرياضي
 
             // Start of عمادة شؤون الطلبة
-             x . TXT ( txt : "عمادة شؤون\nالطلبة" , size : 18 , quarterTurns : 1, bottom : 130 , top : 0 , left : 10 , context : context ) ,
+             temp . TXT ( txt : "عمادة شؤون\nالطلبة" , size : 18 , quarterTurns : 1, bottom : 130 , top : 0 , left : 10 , context : context ) ,
             // Start of عمادة شؤون الطلبة
 
             // Start of المشاغل الهندسيه
-             x . TXT ( txt : "المشاغل\nالهندسيه" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 30 , left : 290 , context : context ) ,
+             temp . TXT ( txt : "المشاغل\nالهندسيه" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 30 , left : 290 , context : context ) ,
             // Start of المشاغل الهندسيه
 
             // Start of مركز الحاسوب
-             x . TXT ( txt : "مركز\nالحاسوب" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 155 , left : 70 , context : context ) ,
+             temp . TXT ( txt : "مركز\nالحاسوب" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 155 , left : 70 , context : context ) ,
             // Start of مركز الحاسوب
 
             // Start of كلية الاعمال
-             x . TXT ( txt : "كلية الاعمال" , size : 16 , quarterTurns : 1 , bottom : 210 , top : 0 , left : 245 , context : context ) ,
+             temp . TXT ( txt : "كلية الاعمال" , size : 16 , quarterTurns : 1 , bottom : 210 , top : 0 , left : 245 , context : context ) ,
             // Start of كلية الاعمال
 
             // Start of القبول و التسحيل
-             x . TXT ( txt : "القبول و التسحيل" , size : 16 , quarterTurns : 1 , bottom : 275 , top : 0 , left : 200 , context : context ) ,
+             temp . TXT ( txt : "القبول و التسحيل" , size : 16 , quarterTurns : 1 , bottom : 275 , top : 0 , left : 200 , context : context ) ,
             // Start of القبول و التسحيل
 
             // Start of عيادة الجامعة
-             x . TXT ( txt : "عيادة\nالجامعة" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 400 , left : 50 , context : context ) ,
+             temp . TXT ( txt : "عيادة\nالجامعة" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 400 , left : 50 , context : context ) ,
             // Start of عيادة الجامعة
 
             // Start of كلية الهندسة
-             x . TXT ( txt : "كلية الهندسة" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 480 , left : 120 , context : context ) ,
+             temp . TXT ( txt : "كلية الهندسة" , size : 18 , quarterTurns : 0 , bottom : 0 , top : 480 , left : 120 , context : context ) ,
             // Start of كلية الهندسة
 
             // Start of رئاسة الجامعة
-             x . TXT ( txt : "رئاسة\nالجامعة" , size : 18 , quarterTurns : 1 , bottom : 270 , top : 0 , left : 350 , context : context ) ,
+             temp . TXT ( txt : "رئاسة\nالجامعة" , size : 18 , quarterTurns : 1 , bottom : 270 , top : 0 , left : 350 , context : context ) ,
             // Start of رئاسة الجامعة
 
             // Start of كلية العلوم
-             x . TXT ( txt : "كلية\nالعلوم" , size : 18 , quarterTurns : 1 , bottom : 95 , top : 0 , left : 545 , context : context ) ,
+             temp . TXT ( txt : "كلية\nالعلوم" , size : 18 , quarterTurns : 1 , bottom : 95 , top : 0 , left : 545 , context : context ) ,
             // Start of كلية العلوم
 
             // Start of المالية
-             x . TXT ( txt : "المالية" , size : 18 , quarterTurns : 1 , bottom : 220 , top : 0 , left : 390 , context : context )
+             temp . TXT ( txt : "المالية" , size : 18 , quarterTurns : 1 , bottom : 220 , top : 0 , left : 390 , context : context )
             // Start of المالية
 
           ]

@@ -20,12 +20,11 @@ class S_Subjects extends StatelessWidget
 {
 
   var x = temp ( ) ;
-  String Specialty_Name_Or_Dept_Name , College_Name , Desc ;
-  bool is_empty ;
-  int num ;
+  String Specialty_Name_Or_Dept_Name , College_Name , Desc , where_did_you_come_from ;
+  bool Is_Empty ;
   List < dynamic > subjects_Or_Doctors_Names ;
 
-  S_Subjects ( { required this . Specialty_Name_Or_Dept_Name , required this . College_Name , required this . Desc , required this . subjects_Or_Doctors_Names , required this . is_empty , required this . num } ) ;
+  S_Subjects ( { required this . Specialty_Name_Or_Dept_Name , required this . College_Name , required this . Desc , required this . subjects_Or_Doctors_Names , required this . Is_Empty , required this . where_did_you_come_from } ) ;
 
   // Start of build Widget
   @override
@@ -75,7 +74,7 @@ class S_Subjects extends StatelessWidget
 
         decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
 
-        child : num == 2 && is_empty ?
+        child : where_did_you_come_from == "From a student request to display teacher data" && Is_Empty ?
         Center
         (
 
@@ -117,7 +116,7 @@ class S_Subjects extends StatelessWidget
               [
 
                 // Start Of Description
-                num == 0 ?
+                where_did_you_come_from == "From a student request to view colleges" ?
                 Stack
                 (
 
@@ -128,7 +127,7 @@ class S_Subjects extends StatelessWidget
                     Container
                     (
 
-                      height : is_empty ? 360 : 400,
+                      height : Is_Empty ? 360 : 400,
                       margin : EdgeInsets . only ( top : 10 , left : 15 , right : 25 ),
 
                       decoration : BoxDecoration
@@ -173,11 +172,11 @@ class S_Subjects extends StatelessWidget
                     // End Of Description Text
 
                     // Start Of Arrow Up
-                    x . Arrows ( top : 30 , left : 341 , icon : Icons . keyboard_arrow_up ),
+                    temp . Arrows ( top : 30 , left : 341 , icon : Icons . keyboard_arrow_up ),
                     // End Of Arrow Up
 
                     // Start Of Arrow down
-                    x . Arrows (top : is_empty ? 270 : 310 , left : 341 , icon : Icons . keyboard_arrow_down )
+                    temp . Arrows (top : Is_Empty ? 270 : 310 , left : 341 , icon : Icons . keyboard_arrow_down )
                     // End Of Arrow down
 
                   ]
@@ -197,12 +196,12 @@ class S_Subjects extends StatelessWidget
                     Padding
                     (
 
-                      padding : EdgeInsets . only ( top : num == 1 ? 30 : num == 2 ? 40 : 50 ),
+                      padding : EdgeInsets . only ( top : where_did_you_come_from == "From a teacher's request to add a subject" ? 30 : where_did_you_come_from == "From a student request to display teacher data" ? 40 : 50 ),
 
                       child : Center
                       (
 
-                        child : Text ( num == 2 ? "مدرسين القسم" : "مواد التخصص" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
+                        child : Text ( where_did_you_come_from == "From a student request to display teacher data" ? "مدرسين القسم" : "مواد التخصص" , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
 
                       )
 
@@ -213,10 +212,10 @@ class S_Subjects extends StatelessWidget
                     Container
                     (
 
-                      height : is_empty && num == 0  ? 200 : 580,
+                      height : Is_Empty && where_did_you_come_from == "From a student request to view colleges"  ? 200 : 580,
                       width : 400 ,
 
-                      margin : EdgeInsets . only ( top : num == 0 ? 25 : 15 , left : 15 , right : 25 ),
+                      margin : EdgeInsets . only ( top : where_did_you_come_from == "From a student request to view colleges" ? 25 : 15 , left : 15 , right : 25 ),
 
                       decoration : BoxDecoration
                       (
@@ -229,16 +228,16 @@ class S_Subjects extends StatelessWidget
                       child : Padding
                       (
 
-                        padding : EdgeInsets . only ( top : num == 1 ? 50 : 65 , bottom : 10 ),
+                        padding : EdgeInsets . only ( top : where_did_you_come_from == "From a teacher's request to add a subject" ? 50 : 65 , bottom : 10 ),
 
-                        child :  is_empty && num == 0 ?
+                        child :  Is_Empty && where_did_you_come_from == "From a student request to view colleges" ?
                         Center
                         (
 
                           child : Padding
                           (
 
-                            padding : EdgeInsets . symmetric ( horizontal : num == 1 ? 20 : 0 ),
+                            padding : EdgeInsets . symmetric ( horizontal : where_did_you_come_from == "From a teacher's request to add a subject" ? 20 : 0 ),
                             child : Text
                             (
                               "لم يقم احد مدرسين هذا التخصص باضافة اي بيانات لاي مادة بعد",
@@ -278,15 +277,15 @@ class S_Subjects extends StatelessWidget
                     // End Of List View
 
                     // Start Of Arrow Up
-                    is_empty ? SizedBox ( ) : x . Arrows ( top : num == 1 ? 50 : 45 , left : 341 , icon : Icons . keyboard_arrow_up ),
+                    Is_Empty ? SizedBox ( ) : temp . Arrows ( top : where_did_you_come_from == "From a teacher's request to add a subject" ? 50 : 45 , left : 341 , icon : Icons . keyboard_arrow_up ),
                     // End Of Arrow Up
 
                     // Start Of Arrow down
-                    is_empty ? SizedBox ( ) : x . Arrows ( top : num == 1 ? 490 : num == 2 ? 510 : 530 , left : 341 , icon : Icons . keyboard_arrow_down ),
+                    Is_Empty ? SizedBox ( ) : temp . Arrows ( top : where_did_you_come_from == "From a teacher's request to add a subject" ? 490 : where_did_you_come_from == "From a student request to display teacher data" ? 510 : 530 , left : 341 , icon : Icons . keyboard_arrow_down ),
                     // End Of Arrow down
 
                   // Start Of Add subject Button
-                  num == 1 ?
+                  where_did_you_come_from == "From a teacher's request to add a subject" ?
                   Padding
                   (
 
@@ -388,7 +387,7 @@ class S_Subjects extends StatelessWidget
       context , MaterialPageRoute
       (
 
-        builder : ( context ) => num == 2 ?
+        builder : ( context ) => where_did_you_come_from == "From a student request to display teacher data" ?
         C_Doctor_data_view ( Name : Subject_Name_Or_Doctor_Name , Coll : College_Name , Dept : Specialty_Name_Or_Dept_Name , Current_courses : Varibel [ "Current_courses" ] , Office_hours : Varibel [ "Office_hours" ] , Contact : Varibel [ "Contact" ] , Dgree : Varibel [ "Dgree" ]  , Office_Address : Varibel [ "Office_Address" ] , Desc : Varibel [ "Desc" ] ):
 
         S_Subject

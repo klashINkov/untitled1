@@ -36,7 +36,6 @@ class _Signin extends State < Signin >
   final Password = TextEditingController ( ) ;
 
   bool pass = true ;
-  var x = temp ( ) ;
 
   GlobalKey < FormState > formstate = GlobalKey < FormState > ( ) ;
   @override
@@ -114,7 +113,7 @@ class _Signin extends State < Signin >
                      SizedBox ( height : 60 ),
 
                       // Start of Email TextField
-                      x . Text_Field ( label : " البريد الالكتروني" , hint : "" , controller : Email , keyboardType : TextInputType . emailAddress , textInputAction : TextInputAction . done , opacity : 0.6  ),
+                      temp . Text_Field ( label : " البريد الالكتروني" , controller : Email , keyboardType : TextInputType . emailAddress , opacity : 0.6  ),
                       // End of Email TextField
 
                       SizedBox ( height : 260 ),
@@ -249,15 +248,16 @@ class _Signin extends State < Signin >
                                   body : Text ( "الرجاء الانتظار لحين تجهيز بياناتك\n\nهل صليت على الحبيب اليوم؟" , textAlign : TextAlign . center , style : TextStyle ( fontSize : 20 , color : Colors . white ) )
 
                                 ) . show ( ) ;
+
                                 String path = "" , Doc = "" , Name , Coll , Dept , Current_courses , Office_hours , Dgree , Office_Address , Contact , Desc ;
 
-                                for ( int i = 0 ; i < x . College_Name . length ; i++ )
+                                for ( int i = 0 ; i < temp . College_Name . length ; i++ )
                                 {
 
-                                  for ( int k = 0 ; k < x . College_DeptS [ i ] . Colleges_Depts . length ; k++ )
+                                  for ( int k = 0 ; k < temp . College_DeptS [ i ] . Colleges_Depts . length ; k++ )
                                   {
 
-                                    final  varr =  FirebaseFirestore . instance . collection ( "المدرسين/${ x . College_Name [ i ] }/${ x . College_DeptS [ i ] . Colleges_Depts [ k ] }" ) ;
+                                    final  varr =  FirebaseFirestore . instance . collection ( "المدرسين/${ temp . College_Name [ i ] }/${ temp . College_DeptS [ i ] . Colleges_Depts [ k ] }" ) ;
 
                                     await varr . where( "Email" , isEqualTo : FirebaseAuth . instance . currentUser! . email . toString ( )  ) . get ( ) . then
                                     (

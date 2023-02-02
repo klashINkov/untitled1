@@ -23,7 +23,6 @@ class Teachers extends StatefulWidget
 class _Teachers extends State < Teachers >
 {
 
-  var x = temp ( ) ;
   bool  ? islog ;
 
   @override
@@ -64,9 +63,9 @@ class _Teachers extends State < Teachers >
           children :
           [
 
-            x . Pic ( context : context , image : widget . Image1_url , txt : widget . Image1_text , flag : islog!  ),
+            temp . Pic ( context : context , image : widget . Image1_url , txt : widget . Image1_text , flag : islog!  ),
 
-            x . Pic ( context : context , image : widget . Image2_Url , txt : widget . Image2text , flag : islog!  ),
+            temp . Pic ( context : context , image : widget . Image2_Url , txt : widget . Image2text , flag : islog!  ),
 
           ]
 

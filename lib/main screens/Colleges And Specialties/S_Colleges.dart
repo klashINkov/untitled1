@@ -14,11 +14,9 @@ import 'package:flutter/material.dart';
 class S_Colleges extends StatelessWidget
 {
 
-  int num ;
+  String where_did_you_come_from ;
 
-  var x = temp ( ) ;
-
-  S_Colleges ( { required this . num } ) ;
+  S_Colleges ( { required this . where_did_you_come_from } ) ;
 
   // Start Of build Widget
   @override
@@ -29,7 +27,7 @@ class S_Colleges extends StatelessWidget
 
       extendBodyBehindAppBar : true,
 
-      appBar : num != 0 ?
+      appBar : where_did_you_come_from != "From a student request to view colleges" ?
       AppBar
       (
 
@@ -68,12 +66,12 @@ class S_Colleges extends StatelessWidget
   (
 
     gridDelegate : SliverGridDelegateWithFixedCrossAxisCount ( crossAxisCount : 2 ),
-    itemCount : x . Items . length,
+    itemCount : temp . Items . length,
 
     itemBuilder : ( context , index )
     {
 
-      var item = x . Items [ index ] ;
+      var item = temp . Items [ index ] ;
 
       return GridTile
       (
@@ -106,12 +104,12 @@ class S_Colleges extends StatelessWidget
 
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
-      if ( num == 0 || num == 1 )
-          College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 0 ] .Colleges_SpecialtieS ;
+      if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
+          College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 0 ] .Colleges_SpecialtieS ;
       else
-          College_Specialties_Or_College_Depts = x . College_DeptS [ 0 ] . Colleges_Depts ;
+          College_Specialties_Or_College_Depts = temp . College_DeptS [ 0 ] . Colleges_Depts ;
 
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
 
     }
 
@@ -120,12 +118,12 @@ class S_Colleges extends StatelessWidget
 
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
-      if ( num == 0 || num == 1 )
-          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 1 ] .Colleges_SpecialtieS ;
+      if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
+          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 1 ] .Colleges_SpecialtieS ;
       else
-          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_DeptS [ 1 ] . Colleges_Depts ;
+          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 1 ] . Colleges_Depts ;
 
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
 
     }
 
@@ -134,13 +132,13 @@ class S_Colleges extends StatelessWidget
 
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
-      if ( num == 0 || num == 1 )
-          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 2 ].Colleges_SpecialtieS ;
+      if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
+          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 2 ].Colleges_SpecialtieS ;
 
       else
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_DeptS [ 2 ] . Colleges_Depts ;
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 2 ] . Colleges_Depts ;
 
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
 
     }
 
@@ -149,12 +147,12 @@ class S_Colleges extends StatelessWidget
 
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
-      if ( num == 0 || num == 1 )
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 3 ].Colleges_SpecialtieS ;
+      if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 3 ].Colleges_SpecialtieS ;
       else
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_DeptS [ 3 ] . Colleges_Depts ;
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 3 ] . Colleges_Depts ;
 
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
 
     }
 
@@ -163,12 +161,12 @@ class S_Colleges extends StatelessWidget
 
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
-      if ( num == 0 || num == 1 )
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 4 ].Colleges_SpecialtieS ;
+      if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 4 ].Colleges_SpecialtieS ;
       else
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_DeptS [ 4 ] . Colleges_Depts ;
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 4 ] . Colleges_Depts ;
 
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
 
     }
 
@@ -177,12 +175,12 @@ class S_Colleges extends StatelessWidget
 
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
-      if ( num == 0 || num == 1 )
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_SpecialtieS [ 5 ].Colleges_SpecialtieS ;
+      if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 5 ].Colleges_SpecialtieS ;
       else
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = x . College_DeptS [ 5 ] . Colleges_Depts ;
+        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 5 ] . Colleges_Depts ;
 
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , num : num ) ) ) ;
+        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
 
     }
 
