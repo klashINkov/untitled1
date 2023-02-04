@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, unused_local_variable, must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, curly_braces_in_flow_control_structures, use_build_context_synchronously
+// ignore_for_file: camel_case_types, must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, curly_braces_in_flow_control_structures, use_build_context_synchronously, file_names
 
 import 'package:flutter/material.dart';
 
@@ -359,11 +359,7 @@ class S_Specialties extends StatelessWidget
 
     else { path = "/الكليات و التخصصات/$College_Name/$Specialty_Name_Or_Dept_Name" ; Doc = "وصف التخصص و اسماء المواد و بياناتها" ; array = "مواد التخصص" ; }
 
-      final bool varr = await FirebaseFirestore . instance . collection ( path ) .doc ( Doc ) . get ( ) . then
-      ( ( value ) => ( value . data ( ) ! [ array ] . length == 0 ) ? Is_Empty = true : Is_Empty = false ) ;
-
     DocumentSnapshot<Map<String, dynamic>> variable = await FirebaseFirestore . instance . collection ( path ) . doc ( Doc ) . get ( ) ;
-
 
       Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => where_did_you_come_from == "From a student request to view colleges" ?
 
