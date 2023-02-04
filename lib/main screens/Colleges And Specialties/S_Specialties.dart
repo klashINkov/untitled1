@@ -1,23 +1,22 @@
 // ignore_for_file: camel_case_types, unused_local_variable, must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, curly_braces_in_flow_control_structures, use_build_context_synchronously
 
-import 'package:untitled1/main%20screens/Colleges%20And%20Specialties/Subject/S_Subjects.dart';
 import 'package:flutter/material.dart';
 
 import 'package:untitled1/main screens/Home Page.dart';
 
-import 'package:untitled1/main%20screens/temp.dart';
+import 'package:untitled1/main screens/temp.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:untitled1/main screens/Colleges And Specialties/Subject/S_Subjects.dart';
 
 // Start Of Specialties Class
 class S_Specialties extends StatelessWidget
 {
 
-
-  String where_did_you_come_from ;
   bool Is_Empty = false ;
 
-  final String College_Name ;
+  String College_Name , where_did_you_come_from ;
   final List < String > College_Specialties_Or_College_Depts ;
 
   S_Specialties ( { required this . College_Name , required this . College_Specialties_Or_College_Depts , required this . where_did_you_come_from } ) ;
@@ -76,12 +75,12 @@ class S_Specialties extends StatelessWidget
                 (
 
                   height : 255,
-                  padding : EdgeInsets . only ( top : 80 ),
+                  padding : EdgeInsets . only ( top : 80 , right: 0 ),
 
                   child : ListView . separated
                   (
                     scrollDirection : Axis . horizontal,
-                    separatorBuilder : ( context , _ ) => SizedBox ( ),
+                    separatorBuilder : ( context , _ ) => SizedBox ( width: 15 ),
                     itemCount : temp . Items . length,
                     itemBuilder : ( context , index ) => Horizontal_List_View ( College_Name : temp . Items [ index ] . College_Name , image : temp . Items [ index ] . image , context : context )
                   )
@@ -90,11 +89,11 @@ class S_Specialties extends StatelessWidget
                 // End of Horizontal List View
 
                 // Start Of Arrow Back
-                temp . Arrows (top : 115 , left : 0 , icon : Icons . arrow_back_ios_sharp ),
+                temp . Arrows (top : 135 , left : 0 , icon : Icons . arrow_back_ios_sharp ),
                 // End Of Arrow Back
 
                 // Start Of Arrow Forward
-                temp . Arrows (top : 115 , left : 330 , icon : Icons . arrow_forward_ios )
+                temp . Arrows (top : 135 , left : 370 , icon : Icons . arrow_forward_ios )
                 // End Of Arrow Forward
 
               ]
@@ -191,7 +190,6 @@ class S_Specialties extends StatelessWidget
     (
 
       width : 150,
-
       decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( image ) , fit : BoxFit . fill  ) ),
 
       child : Center
@@ -273,9 +271,8 @@ class S_Specialties extends StatelessWidget
           College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 0 ] . Colleges_SpecialtieS ;
       else
           College_Specialties_Or_College_Depts = temp . College_DeptS [ 0 ] . Colleges_Depts ;
-
+        Navigator . of ( context ) . pop ( ) ;
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
-
     }
 
     if ( College_Name ==  "كلية العلوم" )
@@ -288,8 +285,8 @@ class S_Specialties extends StatelessWidget
       else
           College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 1 ] . Colleges_Depts ;
 
+          Navigator . of ( context ) . pop ( ) ;
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
-
     }
 
     if ( College_Name ==  "كلية تكنولوجيا المعلومات و الاتصالات" )
@@ -303,8 +300,8 @@ class S_Specialties extends StatelessWidget
       else
         College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 2 ] . Colleges_Depts ;
 
+        Navigator . of ( context ) . pop ( ) ;
         Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
-
     }
 
     if ( College_Name ==  "كلية الأعمال" )
@@ -317,8 +314,8 @@ class S_Specialties extends StatelessWidget
       else
         College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 3 ] . Colleges_Depts ;
 
+        Navigator . of ( context ) . pop ( ) ;
         Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
-
     }
 
     if ( College_Name ==  "كلية الآداب" )
@@ -331,8 +328,8 @@ class S_Specialties extends StatelessWidget
       else
         College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 4 ] . Colleges_Depts ;
 
+        Navigator . of ( context ) . pop ( ) ;
         Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
-
     }
 
     if ( College_Name ==  "كلية العلوم التربوية" )
@@ -345,8 +342,8 @@ class S_Specialties extends StatelessWidget
       else
         College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 5 ] . Colleges_Depts ;
 
+        Navigator . of ( context ) . pop ( ) ;
         Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
-
     }
 
   }
@@ -362,17 +359,32 @@ class S_Specialties extends StatelessWidget
 
     else { path = "/الكليات و التخصصات/$College_Name/$Specialty_Name_Or_Dept_Name" ; Doc = "وصف التخصص و اسماء المواد و بياناتها" ; array = "مواد التخصص" ; }
 
-      final  varr = await FirebaseFirestore . instance . collection ( path ) .
-      doc ( Doc ) . get ( ) . then ( ( value ) => ( value . data ( )! [ array ] . length == 0 ) ?
-      Is_Empty = true : Is_Empty = false ) ;
+      final bool varr = await FirebaseFirestore . instance . collection ( path ) .doc ( Doc ) . get ( ) . then
+      ( ( value ) => ( value . data ( ) ! [ array ] . length == 0 ) ? Is_Empty = true : Is_Empty = false ) ;
 
-      var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( Doc ) . get ( ) ;
+    DocumentSnapshot<Map<String, dynamic>> variable = await FirebaseFirestore . instance . collection ( path ) . doc ( Doc ) . get ( ) ;
 
-      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) =>where_did_you_come_from == "From a student request to view colleges" ?
 
-      S_Subjects(Specialty_Name_Or_Dept_Name: Specialty_Name_Or_Dept_Name, College_Name: College_Name, Desc: varibel [ "وصف التخصص" ], subjects_Or_Doctors_Names: varibel [ array ], Is_Empty: Is_Empty, where_did_you_come_from: where_did_you_come_from) :
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => where_did_you_come_from == "From a student request to view colleges" ?
 
-      S_Subjects(Specialty_Name_Or_Dept_Name: Specialty_Name_Or_Dept_Name, College_Name: College_Name, Desc: "", subjects_Or_Doctors_Names: varibel [ array ], Is_Empty: Is_Empty, where_did_you_come_from: where_did_you_come_from)) ) ;
+      S_Subjects
+      (
+          Specialty_Name_Or_Dept_Name: Specialty_Name_Or_Dept_Name,
+          where_did_you_come_from: where_did_you_come_from,
+          subjects_Or_Doctors_Names: variable [ array ],
+          desc: variable [ "وصف التخصص" ],
+          College_Name: College_Name,
+          Is_Empty: Is_Empty
+      ) :
+
+      S_Subjects
+      (
+          Specialty_Name_Or_Dept_Name: Specialty_Name_Or_Dept_Name,
+          where_did_you_come_from: where_did_you_come_from,
+          subjects_Or_Doctors_Names: variable [ array ],
+          College_Name: College_Name,
+          Is_Empty: Is_Empty
+      )));
 
   }
   // End of List View On Tap Function
