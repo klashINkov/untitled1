@@ -18,11 +18,9 @@ class Home extends StatelessWidget
     return Scaffold
     (
 
-      extendBodyBehindAppBar: false,
-
       body : Container
       (
-
+        padding : EdgeInsets . only ( top : 50 ) ,
         width : 409,
         decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( "pic/pic2.jpg" ) , fit : BoxFit . fill , repeat : ImageRepeat . noRepeat ) ),
 
