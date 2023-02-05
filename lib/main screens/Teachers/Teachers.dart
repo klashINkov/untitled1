@@ -23,7 +23,7 @@ class Teachers extends StatefulWidget
 class _Teachers extends State < Teachers >
 {
 
-  bool  ? islog ;
+  late bool islog ;
 
   @override
   void initState ( )
@@ -33,12 +33,10 @@ class _Teachers extends State < Teachers >
 
     var user = FirebaseAuth . instance . currentUser ;
 
-
     if ( user == null )
-      islog = false ;
-
+        islog = false ;
     else
-      islog = true ;
+        islog = true ;
 
   }
 
@@ -63,9 +61,9 @@ class _Teachers extends State < Teachers >
           children :
           [
 
-            temp . Pic ( context : context , image : widget . Image1_url , txt : widget . Image1_text , flag : islog!  ),
+            temp . Pic ( context : context , image : widget . Image1_url , txt : widget . Image1_text , flag : islog ),
 
-            temp . Pic ( context : context , image : widget . Image2_Url , txt : widget . Image2text , flag : islog!  ),
+            temp . Pic ( context : context , image : widget . Image2_Url , txt : widget . Image2text ),
 
           ]
 
