@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: file_names, camel_case_types, must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
 
 import 'package:untitled1/main%20screens/temp.dart';
 
@@ -105,7 +105,7 @@ class S_Subject extends StatelessWidget
                     child : Padding
                     (
 
-                      padding : EdgeInsets . only (  top : 10 , bottom : 50 , left : 40 , right : 22 ),
+                      padding : EdgeInsets . only (  top : 10 , bottom : 50 , left : 20 , right : 22 ),
 
                       child : SingleChildScrollView
                       (
