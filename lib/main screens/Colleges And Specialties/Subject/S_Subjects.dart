@@ -46,9 +46,7 @@ class S_Subjects extends StatelessWidget
 
         ),
 
-        backgroundColor : Colors . transparent,
-        elevation : 0,
-        centerTitle : true,
+        backgroundColor : Colors . transparent , elevation : 0 , centerTitle : true,
 
         actions :
         [
