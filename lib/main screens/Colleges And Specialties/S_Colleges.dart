@@ -1,6 +1,6 @@
 // Done
 
-// ignore_for_file: camel_case_types, must_be_immutable, use_key_in_widget_constructors, file_names, prefer_const_constructors, non_constant_identifier_names, sort_child_properties_last, prefer_const_literals_to_create_immutables, curly_braces_in_flow_control_structures
+// ignore_for_file: camel_case_types, must_be_immutable, use_key_in_widget_constructors, file_names, prefer_const_constructors, non_constant_identifier_names, sort_child_properties_last, prefer_const_literals_to_create_immutables, curly_braces_in_flow_control_structures, avoid_print
 
 import 'package:untitled1/main screens/Colleges And Specialties/S_Specialties.dart';
 
@@ -52,7 +52,7 @@ class S_Colleges extends StatelessWidget
 
       body : Container
       (
-        padding : EdgeInsets . only ( right : 5 , left : 5 ),
+        padding : EdgeInsets . only ( right : 10 , left : 10 ),
         decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
         child : Grid_View ( )
       )
@@ -65,13 +65,13 @@ class S_Colleges extends StatelessWidget
   Widget Grid_View ( ) => GridView . builder
   (
 
-    gridDelegate : SliverGridDelegateWithFixedCrossAxisCount ( crossAxisCount : 2 ),
+    gridDelegate : SliverGridDelegateWithFixedCrossAxisCount ( crossAxisCount : 2 , mainAxisSpacing : 25 , crossAxisSpacing: 25 ),
     itemCount : temp . Items . length,
 
     itemBuilder : ( context , index )
     {
 
-      var item = temp . Items [ index ] ;
+      STS item = temp . Items [ index ] ;
 
       return GridTile
       (
@@ -84,8 +84,8 @@ class S_Colleges extends StatelessWidget
 
         footer : Container
         (
-          padding : EdgeInsets . only ( left : 15 , right : 15 , bottom : 25 ),
-          child : Text ( item . College_Name , textAlign : TextAlign . center , style : TextStyle ( fontWeight : FontWeight . bold , fontSize : 14 , color : Colors . white ) )
+          padding : EdgeInsets . only ( left : 15 , right : 15 , bottom : 0 ),
+          child : Text ( item . College_Name , textAlign : TextAlign . center , style : TextStyle ( fontWeight : FontWeight . bold , fontSize : item . College_Name == "كلية تكنولوجيا المعلومات و الاتصالات" ? 17 : 20 , color : Colors.white70 ) )
         )
 
       );
@@ -99,17 +99,37 @@ class S_Colleges extends StatelessWidget
   void Grid_View_On_Tap ( String College_Name , BuildContext context )
   {
 
+    late String source ;
+
     if ( College_Name ==  "كلية الهندسة" )
     {
 
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
-          College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 0 ] .Colleges_SpecialtieS ;
-      else
-          College_Specialties_Or_College_Depts = temp . College_DeptS [ 0 ] . Colleges_Depts ;
+          {
+            College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 0 ] . Colleges_SpecialtieS ;
 
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
+            if (where_did_you_come_from == "From a student request to view colleges")
+                  source = "من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه //////////////// ثم الضغط على زر $College_Name" ;
+            else
+                  source = "من الضغط على زر اضافة مادة من قبل المدرس //////////////// ثم الضغط على زر $College_Name" ;
+
+            print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+          }
+      else
+          {
+              College_Specialties_Or_College_Depts = temp . College_DeptS [ 0 ] . Colleges_Depts ;
+              source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name" ;
+              print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+          }
+
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties
+      (
+        College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts,
+        College_Name : College_Name,
+        where_did_you_come_from : where_did_you_come_from
+      ) ) ) ;
 
     }
 
@@ -119,12 +139,29 @@ class S_Colleges extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
-          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 1 ] .Colleges_SpecialtieS ;
+          {
+            College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 1 ] .Colleges_SpecialtieS ;
+
+            if (where_did_you_come_from == "From a student request to view colleges")
+                  source = "من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه //////////////// ثم الضغط على زر $College_Name" ;
+            else
+                  source = "من الضغط على زر اضافة مادة من قبل المدرس //////////////// ثم الضغط على زر $College_Name" ;
+
+            print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+          }
       else
-          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 1 ] . Colleges_Depts ;
+          {
+              College_Specialties_Or_College_Depts = temp.College_DeptS [ 1 ].Colleges_Depts;
+              source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name" ;
+              print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+          }
 
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
-
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties
+      (
+        College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts,
+        College_Name : College_Name,
+        where_did_you_come_from : where_did_you_come_from
+      ) ) ) ;
     }
 
     if ( College_Name ==  "كلية تكنولوجيا المعلومات و الاتصالات" )
@@ -133,13 +170,29 @@ class S_Colleges extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
-          College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 2 ].Colleges_SpecialtieS ;
+          {
+            College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 2 ].Colleges_SpecialtieS ;
 
+            if (where_did_you_come_from == "From a student request to view colleges")
+                  source = "من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه //////////////// ثم الضغط على زر $College_Name" ;
+            else
+                  source = "من الضغط على زر اضافة مادة من قبل المدرس //////////////// ثم الضغط على زر $College_Name" ;
+
+            print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+          }
       else
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 2 ] . Colleges_Depts ;
+          {
+            College_Specialties_Or_College_Depts = temp . College_DeptS [ 2 ] . Colleges_Depts ;
+            source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name" ;
+            print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+          }
 
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
-
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties
+      (
+        College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts,
+        College_Name : College_Name,
+        where_did_you_come_from : where_did_you_come_from
+      ) ) ) ;
     }
 
     if ( College_Name ==  "كلية الأعمال" )
@@ -148,12 +201,29 @@ class S_Colleges extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 3 ].Colleges_SpecialtieS ;
+        {
+          College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 3 ].Colleges_SpecialtieS ;
+
+          if (where_did_you_come_from == "From a student request to view colleges")
+                  source = "من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه //////////////// ثم الضغط على زر $College_Name" ;
+            else
+                  source = "من الضغط على زر اضافة مادة من قبل المدرس //////////////// ثم الضغط على زر $College_Name" ;
+
+            print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+        }
       else
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 3 ] . Colleges_Depts ;
+        {
+            College_Specialties_Or_College_Depts = temp . College_DeptS [ 3 ] . Colleges_Depts ;
+            source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name" ;
+            print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+          }
 
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
-
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties
+      (
+        College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts,
+        College_Name : College_Name,
+        where_did_you_come_from : where_did_you_come_from
+      ) ) ) ;
     }
 
     if ( College_Name ==  "كلية الآداب" )
@@ -162,12 +232,29 @@ class S_Colleges extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 4 ].Colleges_SpecialtieS ;
+          {
+          College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 4 ].Colleges_SpecialtieS ;
+
+          if (where_did_you_come_from == "From a student request to view colleges")
+                  source = "من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه //////////////// ثم الضغط على زر $College_Name" ;
+            else
+                  source = "من الضغط على زر اضافة مادة من قبل المدرس //////////////// ثم الضغط على زر $College_Name" ;
+
+            print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+        }
       else
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 4 ] . Colleges_Depts ;
+          {
+            College_Specialties_Or_College_Depts = temp . College_DeptS [ 4 ] . Colleges_Depts ;
+            source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name" ;
+            print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+          }
 
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
-
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties
+      (
+        College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts,
+        College_Name : College_Name,
+        where_did_you_come_from : where_did_you_come_from
+      ) ) ) ;
     }
 
     if ( College_Name ==  "كلية العلوم التربوية" )
@@ -176,12 +263,29 @@ class S_Colleges extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 5 ].Colleges_SpecialtieS ;
+          {
+          College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 5 ].Colleges_SpecialtieS ;
+
+          if (where_did_you_come_from == "From a student request to view colleges")
+                  source = "من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه //////////////// ثم الضغط على زر $College_Name" ;
+            else
+                  source = "من الضغط على زر اضافة مادة من قبل المدرس //////////////// ثم الضغط على زر $College_Name" ;
+
+            print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+        }
       else
-        College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 5 ] . Colleges_Depts ;
+          {
+            College_Specialties_Or_College_Depts = temp . College_DeptS [ 5 ] . Colleges_Depts ;
+            source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name" ;
+            print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
+          }
 
-        Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
-
+      Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties
+      (
+        College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts,
+        College_Name : College_Name,
+        where_did_you_come_from : where_did_you_come_from
+      ) ) ) ;
     }
 
   }
