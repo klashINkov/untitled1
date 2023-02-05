@@ -1,31 +1,33 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names, prefer_const_constructors, curly_braces_in_flow_control_structures, use_build_context_synchronously, avoid_function_literals_in_foreach_calls, avoid_unnecessary_containers
+// ignore_for_file: camel_case_types, non_constant_identifier_names, prefer_const_constructors, curly_braces_in_flow_control_structures, use_build_context_synchronously, avoid_function_literals_in_foreach_calls, avoid_unnecessary_containers, avoid_print, prefer_const_literals_to_create_immutables
 
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+import 'package:untitled1/main screens/Colleges And Specialties/S_Colleges.dart';
+import 'package:untitled1/main screens/Teachers/Doctor_view&_Edit_data.dart';
+import 'package:untitled1/main screens/Teachers/Add_Subjects.dart';
+import 'package:untitled1/main screens/Teachers/Teachers.dart';
+import 'package:untitled1/main screens/Teachers/SignIn.dart';
+import 'package:untitled1/main screens/personal lost.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:untitled1/main%20screens/Colleges%20And%20Specialties/S_Colleges.dart';
-import 'package:untitled1/main%20screens/Teachers/Doctor_view&_Edit_data.dart';
-import 'package:untitled1/main%20screens/Teachers/SignIn.dart';
-import 'package:untitled1/main%20screens/Teachers/Teachers.dart';
-import 'package:untitled1/main%20screens/personal%20lost.dart';
-import 'package:untitled1/main%20screens/Map.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:untitled1/main screens/Map.dart';
+import 'package:flutter/material.dart';
+
 
 class temp
 {
 
   static int  Index = 0 ;
 
-  static List < sts > Items =
+  static List < STS > Items =
   [
 
-    sts ( College_Name : "كلية الهندسة"                       , image : "pic/engineering college.png" ),
-    sts ( College_Name : "كلية العلوم"                        , image : "pic/sciences college.png" ),
-    sts ( College_Name : "كلية تكنولوجيا المعلومات و الاتصالات" , image : "pic/it college.png" ),
-    sts ( College_Name : "كلية الأعمال"                        , image : "pic/business  college.png" ),
-    sts ( College_Name : "كلية الآداب"                         , image : "pic/arts college.png" ),
-    sts ( College_Name : "كلية العلوم التربوية"               , image : "pic/educational sciences college.png" )
+    STS ( College_Name : "كلية الهندسة"                       , image : "pic/engineering college.png" ),
+    STS ( College_Name : "كلية العلوم"                        , image : "pic/sciences college.png" ),
+    STS ( College_Name : "كلية تكنولوجيا المعلومات و الاتصالات" , image : "pic/it college.png" ),
+    STS ( College_Name : "كلية الأعمال"                        , image : "pic/business  college.png" ),
+    STS ( College_Name : "كلية الآداب"                         , image : "pic/arts college.png" ),
+    STS ( College_Name : "كلية العلوم التربوية"               , image : "pic/educational sciences college.png" )
 
   ];
 
@@ -123,13 +125,15 @@ class temp
   (
 
     padding : EdgeInsets . only (  top  : top , left : left ),
-    child : Icon ( icon , color : Colors . white , size : 80 )
+    child : icon == Icons . keyboard_arrow_up || icon == Icons . keyboard_arrow_down ?
+    Icon ( icon , color : Colors . white , size : 80 ) :
+    Icon ( icon , color : Colors . black45 , size :  40  )
 
   );
   // End Of Arrows Widget ==> اسهم القوائم
 
   // Start Of Pic Widget ==> لقسم المدرسين
-  static Widget Pic ( { required BuildContext context , required String image , required String txt ,required bool flag } ) =>
+  static Widget Pic ( { required BuildContext context , required String image , required String txt , bool flag = false } ) =>
   Expanded
   (
 
@@ -146,11 +150,11 @@ class temp
 
           if ( flag == false )
               Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Signin ( ) ) ) ;
-
           else
             {
 
               String path = "" , Doc = "" , Name , Coll , Dept , Current_courses , Office_hours , Dgree , Office_Address , Contact , Desc ;
+
               AwesomeDialog
               (
 
@@ -200,27 +204,42 @@ class temp
 
               }
 
-              var varibel = await FirebaseFirestore . instance . collection ( path ) . doc ( Doc ) . get ( ) ;
+              var variable = await FirebaseFirestore . instance . collection ( path ) . doc ( Doc ) . get ( ) ;
 
-              Name = varibel [ "Name" ] ;
-              Coll = varibel [ "Coll" ] ;
-              Dept = varibel [ "Dept" ] ;
-              Current_courses = varibel [ "Current_courses" ] ;
-              Office_hours = varibel [ "Office_hours" ] ;
-              Dgree = varibel [ "Dgree" ] ;
-              Office_Address = varibel [ "Office_Address" ] ;
-              Contact = varibel [ "Contact" ] ;
-              Desc = varibel [ "Desc" ] ;
+              Current_courses = variable [ "Current_courses" ] ;
+              Office_Address  = variable [ "Office_Address"  ] ;
+              Office_hours    = variable [ "Office_hours"    ] ;
+              Contact         = variable [ "Contact"         ] ;
+              Dgree           = variable [ "Dgree"           ] ;
+              Name            = variable [ "Name"            ] ;
+              Coll            = variable [ "Coll"            ] ;
+              Dept            = variable [ "Dept"            ] ;
+              Desc            = variable [ "Desc"            ] ;
 
-              Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Doctor_data_view ( Name : Name , Coll : Coll , Dept : Dept , Current_courses : Current_courses , Office_hours : Office_hours , Dgree : Dgree , Office_Address : Office_Address , Contact : Contact , Desc : Desc , What_Do_You_Wont : "View" ) ) ) ;
-
+              Navigator . pushReplacement ( context , MaterialPageRoute ( builder : ( _ ) => Doctor_data_view
+              (
+                What_Do_You_Wont : "View" ,
+                Current_courses  : Current_courses,
+                Office_Address   : Office_Address,
+                Office_hours     : Office_hours,
+                Contact          : Contact,
+                Dgree            : Dgree,
+                Name             : Name,
+                Coll             : Coll,
+                Dept             : Dept,
+                Desc             : Desc
+              ) ) ) ;
 
             }
 
         }
 
         else
-          Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( where_did_you_come_from : "From a student request to display teacher data" ) ) ) ;
+        {
+          Navigator.push(context, MaterialPageRoute(builder: (_) => S_Colleges(where_did_you_come_from: "From a student request to display teacher data")));
+
+          print("where_did_you_come_from = From a student request to display teacher data ( من الضغط على على صورة الطالب في قسم المدرسين ) ");
+        }
 
       },
 
@@ -640,7 +659,7 @@ class temp
   // End Of TexT Function ==> لعرض بيانات المدرس للطالب
 
   // Start Of sdfa Widget ==> للصفحة الرئيسية
-  static Widget sdfa ( { required String text /*, required double size , required double top , required double left */, required BuildContext context } ) =>
+  static Widget sdfa ( { required String text , required BuildContext context } ) =>
   Opacity
   (
 
@@ -653,8 +672,8 @@ class temp
       {
 
         if ( text ==  "المدرسين" )
-          Navigator . push
-          (
+            Navigator . push
+            (
             context , MaterialPageRoute
             (
 
@@ -671,7 +690,11 @@ class temp
           );
 
         else if ( text == "الكليات و التخصصات" )
+        {
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( where_did_you_come_from : "From a student request to view colleges" ) ) ) ;
+          print ( "where_did_you_come_from = From a student request to view colleges ( من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه ) " ) ;
+
+        }
 
         else if ( text == "الخارطة" )
           Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Map ( What_Do_You_Wont : "Map" ) ) ) ;
@@ -706,7 +729,7 @@ class temp
   );
   // End Of sdfa Widget ==> للصفحة الرئيسية
 
-  static Widget suffixIcon ( TextEditingController controller , String txt )
+  static Widget suffixIcon ( TextEditingController controller , String txt ,  )
   {
 
     if ( controller . text . isEmpty )
@@ -742,15 +765,125 @@ class temp
 
   }
 
+  static Widget Custom_Stack ( { required bool Is_Empty , required Widget Function() list_view , bool flag = false , required BuildContext context , required String Text_If_Empty , required String Title , required double Top_padding_If_Empty , required double Font_Size } ) => Stack
+  (
+
+    children :
+    [
+
+      !Is_Empty ? Padding
+      (
+
+        padding : EdgeInsets . only ( top : 110 , left : 132 ),
+        child : Text ( Title , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
+
+      ):
+
+      SizedBox ( ),
+
+      Is_Empty ? Column
+      (
+
+        children :
+        [
+
+          Padding
+          (
+
+            padding : EdgeInsets . only ( top : 110 ),
+            child : Text ( Title , style : TextStyle ( fontSize : 25 , fontWeight : FontWeight . bold , color : Colors . white ) )
+
+          ),
+
+          Padding
+          (
+
+            padding : EdgeInsets . only ( top : Top_padding_If_Empty , left:  40 , right : 50 ),
+            child : Text ( Text_If_Empty  , textAlign : TextAlign.center, style : TextStyle ( fontSize : Font_Size , fontWeight : FontWeight . bold , color : Colors . white ) )
+
+          )
+
+        ]
+
+      ):
+
+      SizedBox ( ),
+
+      // STart Of List View
+      Container
+      (
+        height : 580,
+        width : 400 ,
+
+        margin : EdgeInsets . only ( top :  90 , left : 15 , right : 25  ),
+        padding : EdgeInsets . only ( top : 60 , bottom : 15 ),
+
+        decoration : BoxDecoration
+        (
+
+          border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
+          borderRadius : BorderRadius . circular ( 50 ),
+
+        ),
+
+        child : Column
+        (
+
+          mainAxisAlignment : MainAxisAlignment . center,
+
+          children :
+          [
+
+            list_view ( )
+
+          ]
+
+        )
+
+      ),
+      // End Of List View
+
+      // Start Of Arrow Up
+      Is_Empty ? SizedBox ( ) : temp . Arrows ( top : 100, left : 341 , icon : Icons . keyboard_arrow_up ),
+      // End Of Arrow Up
+
+      // Start Of Arrow down
+      Is_Empty ? SizedBox ( ) : temp . Arrows ( top : 565 , left : 341 , icon : Icons . keyboard_arrow_down ),
+      // End Of Arrow down
+
+      // Start Of Add subject Button
+       flag ? Padding
+       (
+
+          padding : EdgeInsets . only ( top : 613 , left : 10 ),
+
+          child : FloatingActionButton
+          (
+
+            backgroundColor : Colors . blueAccent . shade700,
+            onPressed : ( ) => Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => Add_Subjects ( ) ) ),
+            child : Icon ( Icons . add )
+
+          )
+
+       ) :
+       SizedBox ( )
+      // End Of Add subject Button
+
+    ]
+
+  );
+
+
 }
 
-class sts
+class STS
 {
 
   String College_Name ;
   String image ;
 
-  sts ( { required this . College_Name , required this . image  } ) ;
+  STS ( { required this . College_Name , required this . image  } ) ;
 
 }
 
