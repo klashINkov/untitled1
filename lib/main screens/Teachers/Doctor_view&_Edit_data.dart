@@ -1,6 +1,6 @@
 
 
-// ignore_for_file: camel_case_types, non_constant_identifier_names, use_key_in_widget_constructors, unused_local_variable, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously, curly_braces_in_flow_control_structures
+// ignore_for_file: camel_case_types, non_constant_identifier_names, use_key_in_widget_constructors, unused_local_variable, must_be_immutable, prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously, curly_braces_in_flow_control_structures, avoid_print
 
 import 'package:untitled1/main screens/Colleges And Specialties/S_Colleges.dart';
 
@@ -330,7 +330,11 @@ class _Doctor_data_view extends State < Doctor_data_view >
 
                     child : ListTile
                     (
-                      onTap : ( ) => Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Colleges ( where_did_you_come_from : "From a teacher's request to add a subject" ) ) ) ,
+                      onTap : ( ) =>
+                      {
+                        Navigator . push ( context , MaterialPageRoute ( builder : ( _)  => S_Colleges ( where_did_you_come_from :"From a teacher's request to add a subject" ) ) ),
+                        print("where_did_you_come_from = From a teacher's request to add a subject ( من الضغط على زر اضافة مادة من قبل المدرس ) ")
+                      },
                       title : Center ( child : Text ( "اضافة او تعديل بيانات مادة" , style : TextStyle ( color : Colors . white , fontSize : 20 , fontWeight : FontWeight . bold ) ) )
                     )
 
