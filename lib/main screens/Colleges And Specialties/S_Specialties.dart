@@ -1,6 +1,6 @@
 // ignore_for_file: camel_case_types, must_be_immutable, non_constant_identifier_names, use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, curly_braces_in_flow_control_structures, use_build_context_synchronously, file_names, avoid_print
 
-import 'package:flutter/material.dart';
+import 'package:untitled1/main screens/Colleges And Specialties/Subject/S_Subjects.dart';
 
 import 'package:untitled1/main screens/Home Page.dart';
 
@@ -8,14 +8,14 @@ import 'package:untitled1/main screens/temp.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:untitled1/main screens/Colleges And Specialties/Subject/S_Subjects.dart';
+import 'package:flutter/material.dart';
 
 // Start Of Specialties Class
 class S_Specialties extends StatelessWidget
 {
 
   late bool Is_Empty ;
-
+  late double w , h;
   String College_Name , where_did_you_come_from ;
   final List < String > College_Specialties_Or_College_Depts ;
 
@@ -25,6 +25,8 @@ class S_Specialties extends StatelessWidget
   @override
   Widget build ( BuildContext context )
   {
+     w = MediaQuery . of (context) . size . width ;
+     h = MediaQuery . of (context) . size . height;
 
     return Scaffold
     (
@@ -55,7 +57,7 @@ class S_Specialties extends StatelessWidget
       body : Container
       (
 
-        decoration : BoxDecoration ( gradient : LinearGradient ( colors : [ Color ( 0xff780206 ) , Color ( 0xFF061161 ) ] ) ),
+        decoration : temp . Box_Decoration (),
 
         child : Column
         (
@@ -75,12 +77,12 @@ class S_Specialties extends StatelessWidget
                 (
 
                   height : 255,
-                  padding : EdgeInsets . only ( top : 80 ),
+                  padding : EdgeInsets . only ( top : 80 , left: 15 , right: 0 ),
 
                   child : ListView . separated
                   (
                     scrollDirection : Axis . horizontal,
-                    separatorBuilder : ( context , _ ) => SizedBox ( width : 15 ),
+                    separatorBuilder : ( context , _ ) => SizedBox (  ),
                     itemCount : temp . Items . length,
                     itemBuilder : ( context , index ) => Horizontal_List_View ( College_Name : temp . Items [ index ] . College_Name , image : temp . Items [ index ] . image , context : context )
                   )
@@ -93,7 +95,7 @@ class S_Specialties extends StatelessWidget
                 // End Of Arrow Back
 
                 // Start Of Arrow Forward
-                temp . Arrows (top : 145 , left : 373 , icon : Icons . arrow_forward_ios )
+                temp . Arrows (top : 145 , left :  w - 40 , icon : Icons . arrow_forward_ios )
                 // End Of Arrow Forward
 
               ]
@@ -129,8 +131,8 @@ class S_Specialties extends StatelessWidget
                 (
 
                   margin : EdgeInsets . only ( left : 15 , right : 25 , top : 30 ),
-                  height : 400,
-
+                  height : h-300,
+                  width : w ,
                   decoration : BoxDecoration
                   (
                     border : Border . all ( color : Colors . blueAccent . shade700 , width : 10 ),
@@ -160,11 +162,11 @@ class S_Specialties extends StatelessWidget
                 // End Of List View
 
                 // Start Of Arrow Up
-                temp . Arrows (top : 55 , left : 342 , icon : Icons . keyboard_arrow_up ),
+                temp . Arrows (top : 55 , left :  w - 70 , icon : Icons . keyboard_arrow_up ),
                 // End Of Arrow Up
 
                 // Start Of Arrow down
-                temp . Arrows (top : 330 , left : 342 , icon : Icons . keyboard_arrow_down )
+                temp . Arrows (top : h-360 , left :  w -70 , icon : Icons . keyboard_arrow_down )
                 // End Of Arrow down
 
               ]
@@ -191,7 +193,7 @@ class S_Specialties extends StatelessWidget
 
     child : Container
     (
-
+      margin : EdgeInsets . only ( right : w / 12.5, ) ,
       width : 150,
       decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( image ) , fit : BoxFit . fill  ) ),
 
@@ -201,9 +203,7 @@ class S_Specialties extends StatelessWidget
         child : Padding
         (
 
-
           padding : EdgeInsets . only ( top : 130 , left : 15 , right : 15 ),
-
           child : Text ( College_Name , textAlign : TextAlign . center  , style : TextStyle ( color : Colors . white70 , fontWeight : FontWeight . bold ) )
 
         )
@@ -273,23 +273,10 @@ class S_Specialties extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
-            {
+
               College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 0 ] . Colleges_SpecialtieS ;
-
-               if (where_did_you_come_from == "From a student request to view colleges")
-                    source = "من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-              else
-                    source = "من الضغط على زر اضافة مادة من قبل المدرس //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-
-              print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
-           }
         else
-            {
               College_Specialties_Or_College_Depts = temp . College_DeptS [ 0 ] . Colleges_Depts ;
-
-              source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-              print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
-            }
 
         Navigator . of ( context ) . pop ( ) ;
         Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
@@ -302,23 +289,10 @@ class S_Specialties extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
-          {
+
             College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 1 ] .Colleges_SpecialtieS ;
-
-             if (where_did_you_come_from == "From a student request to view colleges")
-                  source = "من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-            else
-                  source = "من الضغط على زر اضافة مادة من قبل المدرس //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-
-            print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
-          }
       else
-          {
             College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 1 ] . Colleges_Depts ;
-
-             source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-             print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
-          }
 
       Navigator . of ( context ) . pop ( ) ;
       Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
@@ -342,12 +316,7 @@ class S_Specialties extends StatelessWidget
             print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
           }
       else
-          {
             College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 2 ] . Colleges_Depts ;
-
-             source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-             print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
-          }
 
       Navigator . of ( context ) . pop ( ) ;
       Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
@@ -360,23 +329,10 @@ class S_Specialties extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
-          {
+
             College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 3 ].Colleges_SpecialtieS ;
-
-             if (where_did_you_come_from == "From a student request to view colleges")
-                    source = "من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-              else
-                    source = "من الضغط على زر اضافة مادة من قبل المدرس //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-
-              print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
-          }
       else
-          {
             College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 3 ] . Colleges_Depts ;
-
-             source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-             print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
-          }
 
       Navigator . of ( context ) . pop ( ) ;
       Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
@@ -389,23 +345,10 @@ class S_Specialties extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
-          {
+
             College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 4 ].Colleges_SpecialtieS ;
-
-             if (where_did_you_come_from == "From a student request to view colleges")
-                    source = "من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-              else
-                    source = "من الضغط على زر اضافة مادة من قبل المدرس //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-
-              print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
-          }
       else
-          {
             College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 4 ] . Colleges_Depts ;
-
-             source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-             print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
-          }
 
       Navigator . of ( context ) . pop ( ) ;
       Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
@@ -418,23 +361,10 @@ class S_Specialties extends StatelessWidget
       List < String > College_Specialties_Or_College_Depts = [ ] ;
 
       if ( where_did_you_come_from == "From a student request to view colleges" || where_did_you_come_from == "From a teacher's request to add a subject" )
-          {
+
             College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_SpecialtieS [ 5 ].Colleges_SpecialtieS ;
-
-             if (where_did_you_come_from == "From a student request to view colleges")
-                    source = "من الضغط على زر الكليات و التخصصات في الشاشة الرئيسه //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-              else
-                    source = "من الضغط على زر اضافة مادة من قبل المدرس //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-
-              print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
-          }
       else
-          {
             College_Specialties_Or_College_Depts = College_Specialties_Or_College_Depts = temp . College_DeptS [ 5 ] . Colleges_Depts ;
-
-             source = "من الضغط على على صورة الطالب في قسم المدرسين //////////////// ثم الضغط على زر $College_Name في ال Horizontal List View" ;
-             print ( "where_did_you_come_from = $where_did_you_come_from ( $source )" ) ;
-          }
 
       Navigator . of ( context ) . pop ( ) ;
       Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => S_Specialties ( College_Name : College_Name , College_Specialties_Or_College_Depts : College_Specialties_Or_College_Depts , where_did_you_come_from : where_did_you_come_from ) ) ) ;
@@ -456,27 +386,27 @@ class S_Specialties extends StatelessWidget
 
     FirebaseFirestore . instance . collection ( path ) .doc ( Doc ) . get ( ) . then ( ( value ) => ( value . data ( ) ! [ array ] . length == 0 ) ? Is_Empty = true : Is_Empty = false ) ;
 
-    DocumentSnapshot<Map<String, dynamic>> variable = await FirebaseFirestore . instance . collection ( path ) . doc ( Doc ) . get ( ) ;
+    DocumentSnapshot < Map < String , dynamic > > variable = await FirebaseFirestore . instance . collection ( path ) . doc ( Doc ) . get ( ) ;
 
     Navigator . push ( context , MaterialPageRoute ( builder : ( _ ) => where_did_you_come_from == "From a student request to view colleges" ?
 
       S_Subjects
       (
-          Specialty_Name_Or_Dept_Name: Specialty_Name_Or_Dept_Name,
-          where_did_you_come_from: where_did_you_come_from,
-          subjects_Or_Doctors_Names: variable [ array ],
-          desc: variable [ "وصف التخصص" ],
-          College_Name: College_Name,
-          Is_Empty: Is_Empty
+        Specialty_Name_Or_Dept_Name: Specialty_Name_Or_Dept_Name,
+        where_did_you_come_from: where_did_you_come_from,
+        subjects_Or_Doctors_Names: variable [ array ],
+        desc: variable [ "وصف التخصص" ],
+        College_Name: College_Name,
+        Is_Empty: Is_Empty
       ) :
 
       S_Subjects
       (
-          Specialty_Name_Or_Dept_Name: Specialty_Name_Or_Dept_Name,
-          where_did_you_come_from: where_did_you_come_from,
-          subjects_Or_Doctors_Names: variable [ array ],
-          College_Name: College_Name,
-          Is_Empty: Is_Empty
+        Specialty_Name_Or_Dept_Name: Specialty_Name_Or_Dept_Name,
+        where_did_you_come_from: where_did_you_come_from,
+        subjects_Or_Doctors_Names: variable [ array ],
+        College_Name: College_Name,
+        Is_Empty: Is_Empty
       )));
 
   }
