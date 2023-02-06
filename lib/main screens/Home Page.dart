@@ -15,19 +15,23 @@ class Home extends StatelessWidget
   Widget build ( BuildContext context )
   {
 
+    temp . Media_Query(context: context);
+
     return Scaffold
     (
 
       body : Container
       (
-        padding : EdgeInsets . only ( top : 50 ) ,
-        width : 409,
+        padding : EdgeInsets . only ( top : temp . h / 20 ) ,
+        width : temp . w,
+        height : temp . h,
+
         decoration : BoxDecoration ( image : DecorationImage ( image : AssetImage ( "pic/pic2.jpg" ) , fit : BoxFit . fill , repeat : ImageRepeat . noRepeat ) ),
 
         child : Column
         (
 
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment : MainAxisAlignment . center,
 
           children :
           [
