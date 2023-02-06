@@ -1,17 +1,22 @@
+
+// ignore_for_file: use_key_in_widget_constructors
+
+import 'package:untitled1/main screens/Home Page.dart';
+
+import 'package:device_preview/device_preview.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
 
+import 'firebase_options.dart';
 
-
-// ignore: depend_on_referenced_packages
-import 'package:firebase_core/firebase_core.dart';
-import 'package:untitled1/main%20screens/Home%20Page.dart';
-
-void main ( ) async
+void main() async
 {
 
   WidgetsFlutterBinding . ensureInitialized ( ) ;
-  await Firebase . initializeApp ( ) ;
-  runApp ( My ( ) );
+  await Firebase . initializeApp ( options : DefaultFirebaseOptions . currentPlatform ) ;
+  runApp ( My ( ) ) ;
 
 }
 
@@ -29,7 +34,7 @@ class My extends StatelessWidget
       debugShowCheckedModeBanner : false,
 
       title : "Ershad",
-
+      builder : DevicePreview . appBuilder ,
       home : Home ()
 
     );
