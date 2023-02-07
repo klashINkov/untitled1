@@ -21,7 +21,7 @@ class S_Colleges extends StatelessWidget
   Widget build ( BuildContext context )
   {
 
-    double w = MediaQuery . of ( context ) . size . width , h = MediaQuery . of ( context ) . size . height , image_height = h / 3.6 ;
+    double w = MediaQuery . of ( context ) . size . width , h = MediaQuery . of ( context ) . size . height , image_height = h / 3.6 , image_width = w / 2.2 ;
 
     return Scaffold
     (
@@ -83,11 +83,11 @@ class S_Colleges extends StatelessWidget
               children :
                [
 
-                  temp . Custom_Grid_View ( College_Name : temp . Items [ 0 ] . College_Name , image : temp . Items [ 0 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , context : context ),
+                  temp . Custom_Grid_View ( College_Name : temp . Items [ 0 ] . College_Name , image : temp . Items [ 0 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , image_width : image_width , context : context ),
 
                   SizedBox ( width : w / 20 ),
 
-                  temp . Custom_Grid_View ( College_Name : temp . Items [ 1 ] . College_Name , image : temp . Items [ 1 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , context : context ),
+                  temp . Custom_Grid_View ( College_Name : temp . Items [ 1 ] . College_Name , image : temp . Items [ 1 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , image_width : image_width , context : context ),
               ]
 
             ),
@@ -99,11 +99,11 @@ class S_Colleges extends StatelessWidget
 
               children :
                [
-                temp . Custom_Grid_View ( College_Name : temp . Items [ 2 ] . College_Name , image : temp . Items [ 2 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , context : context ),
+                temp . Custom_Grid_View ( College_Name : temp . Items [ 2 ] . College_Name , image : temp . Items [ 2 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , image_width : image_width , context : context ),
 
                 SizedBox ( width : w / 20 ),
 
-                temp . Custom_Grid_View ( College_Name : temp . Items [ 3 ] . College_Name , image : temp . Items [ 3 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , context : context ),
+                temp . Custom_Grid_View ( College_Name : temp . Items [ 3 ] . College_Name , image : temp . Items [ 3 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , image_width : image_width , context : context ),
               ]
 
             ),
@@ -115,11 +115,11 @@ class S_Colleges extends StatelessWidget
 
               children :
                [
-                temp . Custom_Grid_View ( College_Name : temp . Items [ 4 ] . College_Name , image : temp . Items [ 4 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , context : context ),
+                temp . Custom_Grid_View ( College_Name : temp . Items [ 4 ] . College_Name , image : temp . Items [ 4 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , image_width : image_width , context : context ),
 
                 SizedBox ( width : w / 20 ),
 
-                temp . Custom_Grid_View ( College_Name : temp . Items [ 5 ] . College_Name , image : temp . Items [ 5 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , context : context ),
+                temp . Custom_Grid_View ( College_Name : temp . Items [ 5 ] . College_Name , image : temp . Items [ 5 ] . image , where_did_you_come_from : where_did_you_come_from , image_height : image_height , image_width : image_width , context : context ),
               ]
 
             ),
